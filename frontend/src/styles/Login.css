@@ -1,0 +1,61 @@
+
+
+.fondo {
+    background-color: #59595a; /* Fondo gris claro */
+}
+
+.login-container {
+    width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.title {
+    color: #c0392b; /* Rojo oscuro */
+    text-align: center;
+}
+
+.login-form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #920b0b; /* Texto gris oscuro */
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #dddddd; /* Borde gris */
+    border-radius: 4px;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #c0392b; /* Borde rojo al estar enfocado */
+}
+
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #c0392b; /* Fondo rojo */
+    color: #ffffff; /* Texto blanco */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #a93226; /* Fondo rojo más oscuro al pasar el mouse */
+}
+

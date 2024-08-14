@@ -1,0 +1,175 @@
+/* styles.css */
+
+.left {
+    width: 50%; /* Cambiado para ocupar la mitad del contenedor */
+    height: 100%;
+    float: left;
+    background-color: black;
+    color: white;
+    position: relative;
+}
+
+.right {
+    width: 50%; /* Cambiado para ocupar la mitad del contenedor */
+    height: 100%;
+    float: right;
+    background-color: black;
+    position: relative;
+}
+
+.dicom-wrapper {
+    width: 95%;
+    height: 680px;
+    background-color: black;
+    position: relative;
+    margin: auto;
+}
+
+.wrapper {
+    background-color: black;
+    width: 100%;
+    height: 800px;
+    position: relative;
+}
+
+.dicom-viewer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex; /* Añadido para usar flexbox */
+    justify-content: space-around; /* Añadido para espaciar las imágenes */
+}
+
+.Toolbar {
+    width: 100%;
+    height: 60px;
+    background-color: black;
+    position: relative;
+    text-align: center; /* Añadido para centrar el contenido */
+}
+
+.toolButton {
+    width: 40px;
+    height: 40px;
+    background-color: gray;
+    margin-top: 10px;
+    position: relative;
+}
+
+.sliceButton {
+    width: 80px;
+    height: 40px;
+    background-color: gray;
+    margin-top: 10px;
+    color: white;
+    position: relative;
+}
+
+.bottomleft {
+    float: left;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    color: rgb(255, 255, 204);
+}
+
+.bottomright {
+    float: right;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    color: rgb(255, 255, 204);
+}
+
+.stack {
+    width: 110px;
+    height: 120px;
+    color: white;
+    margin: 10px;
+    border-style: solid;
+    position: relative;
+}
+
+.stack-wrapper {
+    height: 800px;
+    width: 150px;
+    overflow: scroll;
+    position: absolute; /* Añadido para ajustar la posición */
+}
+
+.center {
+    text-align: center;
+    bottom: 0;
+    color: rgb(255, 255, 204);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #dfdfdf;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px 36px;
+    text-decoration: none;
+    display: block;
+    font-size: 20px;
+    margin: 2px 0 0 0;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Estilos específicos para DicomHeader */
+.dicom-info-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+.search-input {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #444;
+    color: white;
+}
+
+.dicom-info-item {
+    background: #555;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #777;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.dicom-info-item h3 {
+    margin: 0 0 5px;
+    font-size: 1.2em;
+    color: #f1f1f1;
+}
+
+.dicom-info-item p {
+    margin: 0;
+    font-size: 1em;
+    color: #ccc;
+}

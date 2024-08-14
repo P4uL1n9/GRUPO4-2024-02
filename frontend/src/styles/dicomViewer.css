@@ -1,0 +1,11 @@
+#dicomImage {
+    width: 1024px;
+    height: 800px;
+    border: 1px solid black;
+  }
+  
+  .cornerstone-canvas {
+    width: 100%;
+    height: 100%;
+  }
+  
