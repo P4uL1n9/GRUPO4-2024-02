@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import NavPrincipal from '../components/NavPrincipal';
+import '../styles/inicio.css';
 import '../styles/Login.css'; // Asegúrate de importar tu hoja de estilos
 
 function Login() {
@@ -24,6 +26,10 @@ function Login() {
     };
 
     return (
+        <div>
+        <nav>
+            <NavPrincipal />
+        </nav>
         <body className ="fondo">
         <div className="login-container">
             <h1 className="title">Visualizador de Imágenes</h1>
@@ -52,6 +58,7 @@ function Login() {
             </form>
         </div>
         </body>
+        </div>
     );
 }
 

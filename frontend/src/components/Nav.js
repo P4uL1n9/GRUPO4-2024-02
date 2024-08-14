@@ -6,8 +6,10 @@ function Navigation() {
   return (
    <h1>
     <ul>
+      <li ><Link to="/Inicio">Inicio</Link></li>
       <li ><Link to="/DicomViewer">DicomViewer</Link></li>
       <li ><Link to="/DicomHeader">DicomHeader</Link></li>
+      <li ><Link to="/login">Salida</Link></li>
     </ul>
   </h1> 
   );

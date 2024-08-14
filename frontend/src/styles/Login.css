@@ -1,5 +1,3 @@
-
-
 .fondo {
     background-color: #59595a; /* Fondo gris claro */
 }
@@ -14,7 +12,7 @@
 }
 
 .title {
-    color: #c0392b; /* Rojo oscuro */
+    color: #000000; /* Rojo oscuro */
     text-align: center;
 }
 
@@ -48,7 +46,7 @@ label {
 .submit-button {
     width: 100%;
     padding: 10px;
-    background-color: #c0392b; /* Fondo rojo */
+    background-color: #243685; /* Fondo rojo */
     color: #ffffff; /* Texto blanco */
     border: none;
     border-radius: 4px;
@@ -56,6 +54,6 @@ label {
 }
 
 .submit-button:hover {
-    background-color: #a93226; /* Fondo rojo más oscuro al pasar el mouse */
+    background-color: #243685; /* Fondo rojo más oscuro al pasar el mouse */
 }
 

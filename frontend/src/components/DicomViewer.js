@@ -58,8 +58,9 @@ const DicomViewer = () => {
       <nav>
         <Nav/>
       </nav>
+      <body className='fondo2' >
       <div>
-        <h2>Visor de Archivos DICOM</h2>
+        <h2 className='custom-h2'>Visor de Archivos DICOM</h2>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         <form style={{ display: 'flex', justifyContent: 'center' }}>
           <input type="file" accept=".dcm" multiple onChange={handleFileChange} />
@@ -73,6 +74,7 @@ const DicomViewer = () => {
           ))}
         </div>
       </div>
+      </body>
       </div>
   );
 };

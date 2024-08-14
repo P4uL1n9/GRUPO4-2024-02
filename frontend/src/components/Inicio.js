@@ -18,7 +18,7 @@ function Dashboard() {
       <nav>
         <Nav />
       </nav>
-      <body className="fondo">
+      <body className="fondo2">
           <div className="introduction-container">
             <h1>Bienvenidos al Visualizador de Imágenes de Cabecera DICOM</h1>
             <p>

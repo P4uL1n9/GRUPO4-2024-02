@@ -96,6 +96,7 @@ const DicomHeader = () => {
       <nav>
         <Nav />
       </nav>
+      <body className='fondo2'>
       <div className="dicom-info-container">
         <input
           id="dicom-file-input"
@@ -120,6 +121,7 @@ const DicomHeader = () => {
           </div>
         ))}
       </div>
+      </body>
     </div>
   );
 };
