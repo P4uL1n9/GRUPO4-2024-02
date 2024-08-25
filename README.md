@@ -5,7 +5,7 @@ Este es el repositorio del *Grupo 4*, cuyos integrantes son:
 * Paulina Labrín - 202173045-1
 * María Silva - 202004684-0
 * Nombre 3 - Rol
-* Nombre 4 - Rol
+* Jeremy Zavala - 202044535-4
 * **Tutor**: Sebastian Esteban Cifuentes Monje
 
 ## Wiki
