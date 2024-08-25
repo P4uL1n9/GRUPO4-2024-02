@@ -6,7 +6,7 @@ Este es el repositorio del *Grupo 4*, cuyos integrantes son:
 * María Silva - 202004684-0
 * Nombre 3 - Rol
 * Nombre 4 - Rol
-* **Tutor**: 
+* **Tutor**: Sebastian Esteban Cifuentes Monje
 
 ## Wiki
 
