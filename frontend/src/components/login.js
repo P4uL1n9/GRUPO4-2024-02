@@ -27,11 +27,11 @@ function Login() {
 
     return (
         <div>
-        <nav>
+        <nav style={{backgroundColor: '#ffffff', padding: '10px'}}>
             <NavPrincipal />
         </nav>
-        <body className ="fondo">
-        <div className="login-container">
+        <body className='fondo'>
+        <div className="login-container"> 
             <h1 className="title">Visualizador de Imágenes</h1>
             <h2>Login</h2>
             {error && <p style={{ color: 'red' }}>{error}</p>}

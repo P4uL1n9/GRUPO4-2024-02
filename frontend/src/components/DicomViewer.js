@@ -55,10 +55,10 @@ const DicomViewer = () => {
 
   return (
     <div>
-      <nav>
+      <nav style={{backgroundColor: '#ffffff', padding: '10px'}}>
         <Nav/>
       </nav>
-      <body className='fondo2' >
+      <body>
       <div>
         <h2 className='custom-h2'>Visor de Archivos DICOM</h2>
         {error && <p style={{ color: 'red' }}>{error}</p>}

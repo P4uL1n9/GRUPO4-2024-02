@@ -27,7 +27,7 @@ function Register() {
 
     return (
         <div>
-        <nav>
+        <nav style={{backgroundColor: '#ffffff', padding: '10px'}}>
             <NavPrincipal />
         </nav>
         <body className="fondo">

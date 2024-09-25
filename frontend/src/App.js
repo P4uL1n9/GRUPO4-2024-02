@@ -1,6 +1,7 @@
 // src/App.js
 import React from 'react';
-import { Route, Routes, Link } from 'react-router-dom';
+import { Route, Routes} from 'react-router-dom';
+import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
 import Login from './components/login';
@@ -14,7 +15,8 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element = {<Registro/>}/>
+        <Route path='/' element = {<Home/>}/>
+        <Route path="/registro" element = {<Registro/>}/>
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />

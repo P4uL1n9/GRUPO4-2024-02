@@ -1,5 +1,11 @@
 /* styles.css */
 
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #292929; /* Asegúrate de mantener el color de fondo */
+}
+
 .left {
     width: 50%; /* Cambiado para ocupar la mitad del contenedor */
     height: 100%;

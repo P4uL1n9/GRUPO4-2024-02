@@ -15,10 +15,10 @@ import '../styles/inicio.css';
 function Dashboard() {
   return (
     <div>
-      <nav>
+      <nav style={{backgroundColor: '#ffffff', padding: '10px'}}>
         <Nav />
       </nav>
-      <body className="fondo2">
+      <body>
           <div className="introduction-container">
             <h1>Bienvenidos al Visualizador de Imágenes de Cabecera DICOM</h1>
             <p>

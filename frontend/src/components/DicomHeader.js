@@ -93,10 +93,10 @@ const DicomHeader = () => {
 
   return (
     <div>
-      <nav>
+      <nav style={{backgroundColor: '#ffffff', padding: '10px'}}>
         <Nav />
       </nav>
-      <body className='fondo2'>
+      <body>
       <div className="dicom-info-container">
         <input
           id="dicom-file-input"
