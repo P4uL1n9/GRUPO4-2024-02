@@ -179,3 +179,27 @@ body {
     font-size: 1em;
     color: #ccc;
 }
+
+/* src/styles/styles.css */
+
+.custom-h2 {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .dicom-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .dicom-viewer {
+    margin: 10px;
+  }
+  
+  .cornerstone-canvas {
+    width: 512px;
+    height: 512px;
+    border: 1px solid #000;
+  }
+  

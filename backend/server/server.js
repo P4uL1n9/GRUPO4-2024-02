@@ -23,4 +23,3 @@ db.sequelize.sync().then(() => {
         console.log("Servidor iniciado en el puerto 5000");
     });
 });
-
