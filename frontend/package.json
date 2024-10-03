@@ -58,6 +58,7 @@
     "style-loader": "^3.3.1",
     "tailwindcss": "^3.0.2",
     "terser-webpack-plugin": "^5.2.5",
+    "three": "^0.169.0",
     "vtk.js": "^32.3.0",
     "web-vitals": "^2.1.4",
     "webpack": "^5.64.4",
