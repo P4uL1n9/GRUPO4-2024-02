@@ -5,6 +5,7 @@ import dicomParser from 'dicom-parser';
 import * as THREE from 'three';
 import Nav from '../components/Nav';
 import '../styles/styles.css'; // Importa tu archivo CSS personalizado
+import '../styles/dicomViewer.css'; // Importa tu archivo CSS personalizado
 
 const DicomViewer = () => {
   const [images, setImages] = useState([]);
@@ -142,20 +143,26 @@ const DicomViewer = () => {
         <Nav />
       </nav>
       <div>
-        <h2 className="custom-h2">Visor de Archivos DICOM en 2D y 3D</h2>
+        <h2 className="custom-h2">Visor de Archivos DICOM</h2>
         {error && <p style={{ color: 'red' }}>{error}</p>}
-        <form style={{ display: 'flex', justifyContent: 'center' }}>
-          <input type="file" accept=".dcm" multiple onChange={handleFileChange} />
-          <button type="button" onClick={displayImages}>
+        <form style={{ display: 'flex', justifyContent: 'center', color:'white', marginBottom: '20px'}}>
+          <input 
+            type="file" 
+            accept=".dcm" 
+            multiple 
+            onChange={handleFileChange} 
+            className='custom-file-upload'
+          />
+          {/* <button type="button" onClick={displayImages}>
             Mostrar Imágenes 2D
-          </button>
+          </button> */}
         </form>
         <div id="dicomImage" className="dicom-wrapper">
           {/* Renderizado en 2D */}
           <canvas className="cornerstone-canvas"></canvas>
         </div>
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-          <label htmlFor="index">Imagen: </label>
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px'}}>
+          <label htmlFor="index" style={{ marginRight: '10px', color:'white' }}>Imagen: </label>
           <input
             id="index"
             type="range"
@@ -163,13 +170,16 @@ const DicomViewer = () => {
             max={images.length - 1} // Actualiza el máximo según el número de imágenes
             value={currentIndex}
             onChange={handleIndexChange}
-            style={{ marginLeft: '10px', width: '300px' }}
+            className='custom-range' // dicomViewer.css
+            // style={{ marginLeft: '10px', width: '300px' }}
           />
           {/* Notificador para el índice */}
-          <span style={{ marginLeft: '10px' }}>{Math.round((currentIndex / (images.length - 1)) * 100)}</span>
+          <span style={{ marginLeft: '10px', color: 'white' }}>
+              {currentIndex + 1}
+          </span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-          <label htmlFor="negativeToggle" style={{ marginRight: '10px' }}>
+          <label htmlFor="negativeToggle" style={{ marginRight: '10px', color: 'white'}}>
             Modo Negativo:
           </label>
           <input
@@ -180,7 +190,7 @@ const DicomViewer = () => {
           />
         </div>
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-          <label htmlFor="contrast" style={{ marginRight: '10px' }}>
+          <label htmlFor="contrast" style={{ marginRight: '10px', color:'white' }}>
             Contraste:
           </label>
           <input
@@ -191,10 +201,11 @@ const DicomViewer = () => {
             step="0.1"
             value={contrast}
             onChange={handleContrastChange}
-            style={{ marginLeft: '10px', width: '300px' }}
+            className='custom-range' // dicomViewer.css
+            // style={{ marginLeft: '10px', width: '300px' }}
           />
           {/* Notificador para el contraste */}
-          <span style={{ marginLeft: '10px' }}>{Math.round((contrast / 3) * 100)}%</span>
+          <span style={{ marginLeft: '10px', color: 'white' }}>{Math.round((contrast / 3) * 100)}%</span>
         </div>
         <div ref={threeViewerRef} style={{ width: '100%', height: '400px' }} />
       </div>

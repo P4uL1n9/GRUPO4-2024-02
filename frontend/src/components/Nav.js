@@ -9,7 +9,7 @@ function Navigation() {
       <li ><Link to="/Inicio">Inicio</Link></li>
       <li ><Link to="/DicomViewer">DicomViewer</Link></li>
       <li ><Link to="/DicomHeader">DicomHeader</Link></li>
-      <li ><Link to="/visualizador">DicomViewer3D</Link></li>
+      {/* <li ><Link to="/visualizador">DicomViewer3D</Link></li> */}
       <li ><Link to="/">Salida</Link></li>
     </ul>
   </h1> 
