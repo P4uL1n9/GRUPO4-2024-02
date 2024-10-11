@@ -4,13 +4,14 @@ import '../styles/nav.css';
 
 function NavigationPrincipal() {
     return (
-        <h1>
-          <ul>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to ="/login">Inicia Sesión</Link></li>
-            <li><Link to="/registro">Registrate</Link></li>
-          </ul>
-        </h1>
+    <nav className="navbar">
+      <h1 className="navbar-title">Grupo 4</h1>
+      <ul className="navbar-list">
+        <li><Link to="/about" className="navbar-link">About</Link></li>
+        <li><Link to="/login" className="navbar-link">Inicia Sesión</Link></li>
+        <li><Link to="/registro" className="navbar-link">Registrate</Link></li>
+      </ul>
+    </nav>
     );
   }
   

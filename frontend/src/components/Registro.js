@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NavPrincipal from '../components/NavPrincipal';
 import '../styles/Register.css'; // Asegúrate de importar tu hoja de estilos
+import '../styles/Login.css';
 
 function Register() {
     const [nombre, setNombre] = useState('');
@@ -27,10 +28,8 @@ function Register() {
 
     return (
         <div>
-        <nav style={{backgroundColor: '#ffffff', padding: '10px'}}>
-            <NavPrincipal />
-        </nav>
-        <body className="fondo">
+        <NavPrincipal />
+        <body>
         <div className="register-container">
             <h1 className="title">Visualizador de Imágenes</h1>
             <h2>Registro</h2>

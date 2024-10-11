@@ -27,13 +27,11 @@ function Login() {
 
     return (
         <div>
-        <nav style={{backgroundColor: '#ffffff', padding: '10px'}}>
-            <NavPrincipal />
-        </nav>
-        <body className='fondo'>
+        <NavPrincipal />
+        <body>
         <div className="login-container"> 
             <h1 className="title">Visualizador de Imágenes</h1>
-            <h2>Login</h2>
+            <h2>Iniciar sesión</h2>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <form onSubmit={handleSubmit} className="login-form">
                 <div className="form-group">

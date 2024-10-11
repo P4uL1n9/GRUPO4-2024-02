@@ -1,15 +1,16 @@
 // src/components/About.js
 import React from 'react';
 import NavPrincipal from '../components/NavPrincipal';
+import '../styles/styles.css';
 
 function About() {
   return (
     <div>
-      <nav style={{backgroundColor: '#ffffff', padding: '10px'}}>
-            <NavPrincipal />
-      </nav>
-      <h1 style={{color:'white'}}>Grupo 4</h1>
-      <p style={{color:'white'}}>Visualizador de imagenes</p>
+      <NavPrincipal />
+      <div className="about-container">
+        <h1>Visualizador de imágenes DICOM</h1>
+        <h2>Grupo 4</h2>
+      </div>
     </div>
   );
 }
