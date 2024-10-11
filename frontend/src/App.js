@@ -9,7 +9,6 @@ import Inicio from './components/Inicio';
 import DicomViewer from './components/DicomViewer';
 import Registro from './components/Registro';
 import Logout from './components/logout';
-import DicomViewer3D from './components/DicomViewer3D';
 
 function App() {
   return (
@@ -23,7 +22,6 @@ function App() {
         <Route path="/inicio" element={<Inicio />} />
         <Route path="/DicomViewer" element={<DicomViewer />} />
         <Route path="/logout" element={<Logout />} />
-        <Route path="/visualizador" element={<DicomViewer3D />} />
       </Routes>
     </div>
   );
