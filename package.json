@@ -3,6 +3,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.23.1",
+    "requests": "^0.3.0",
     "vtk.js": "^32.3.0"
   }
 }
