@@ -2,11 +2,10 @@ import React, { useState, useRef, useEffect } from 'react';
 import cornerstone from 'cornerstone-core';
 import cornerstoneWADOImageLoader from 'cornerstone-wado-image-loader';
 import dicomParser from 'dicom-parser';
-import * as THREE from 'three';
+import * as XLSX from 'xlsx'; // Para exportar a Excel
 import Nav from '../components/Nav';
-import * as XLSX from 'xlsx'; // Importa la biblioteca xlsx
-import '../styles/styles.css'; // Importa tu archivo CSS personalizado
-import '../styles/dicomViewer.css'; // Importa tu archivo CSS personalizado
+import '../styles/styles.css'; // Tu CSS personalizado
+import '../styles/dicomViewer.css'; // Tu CSS personalizado
 
 const ModalComponent = ({ children, isOpen, toggleModal }) => {
   return (
@@ -31,27 +30,26 @@ const DicomViewer = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isNegative, setIsNegative] = useState(false);
   const [contrast, setContrast] = useState(1);
-  const [dicomInfo, setDicomInfo] = useState([]); // Para la información DICOM
+  const [dicomInfo, setDicomInfo] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [fileName, setFileName] = useState('');
-  const [isOpen, setIsOpen] = useState(false); // Controla si el modal está abierto o cerrado
-  const threeViewerRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false); // Modal
+  const imageCanvasRef = useRef(null);
 
   useEffect(() => {
     if (images.length > 0) {
       displayImages();
-      visualizeIn3D(images[currentIndex]);
     }
   }, [images, currentIndex, isNegative, contrast]);
 
   const toggleModal = () => {
-    setIsOpen(!isOpen); // Cambia el estado del modal al hacer clic
+    setIsOpen(!isOpen);
   };
 
   const handleFileChange = async (e) => {
     const fileList = e.target.files;
     if (fileList.length > 0) {
-      setFileName(fileList[0].name); // Guarda el nombre del archivo
+      setFileName(fileList[0].name);
 
       try {
         cornerstoneWADOImageLoader.external.cornerstone = cornerstone;
@@ -67,8 +65,7 @@ const DicomViewer = () => {
             const arrayBuffer = await file.arrayBuffer();
             const byteArray = new Uint8Array(arrayBuffer);
             const dataSet = dicomParser.parseDicom(byteArray);
-            
-            // Extrae la información que necesitas de la cabecera DICOM
+
             const info = [
               { title: 'Patient Name', value: dataSet.string('x00100010') },
               { title: 'Study Date', value: dataSet.string('x00080020') },
@@ -99,13 +96,13 @@ const DicomViewer = () => {
     try {
       const element = document.getElementById('dicomImage');
       cornerstone.enable(element);
-
+  
       const imageId = images[currentIndex];
       const image = await cornerstone.loadImage(imageId);
-
+  
       let pixelData = image.getPixelData();
       pixelData = applyContrast(pixelData, contrast);
-
+  
       if (isNegative) {
         const negativePixelData = new Uint8Array(pixelData.length);
         for (let i = 0; i < pixelData.length; i++) {
@@ -131,22 +128,6 @@ const DicomViewer = () => {
     return adjustedPixelData;
   };
 
-  const visualizeIn3D = (imageId) => {
-    const element = threeViewerRef.current;
-    const width = element.clientWidth;
-    const height = element.clientHeight;
-
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-
-    const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(width, height);
-    element.innerHTML = '';
-    element.appendChild(renderer.domElement);
-
-    camera.position.z = 5;
-  };
-
   const handleIndexChange = (event) => {
     const newIndex = Number(event.target.value);
     setCurrentIndex(newIndex);
@@ -154,37 +135,37 @@ const DicomViewer = () => {
   };
 
   const handleNegativeToggle = () => {
-    setIsNegative((prev) => !prev);
-    displayImages();
+    setIsNegative((prev) => !prev); // Cambia el estado de isNegative
+    displayImages(); // Actualiza la imagen inmediatamente al cambiar el estado
   };
 
   const handleContrastChange = (event) => {
     const newContrast = Number(event.target.value);
-    setContrast(newContrast);
-    displayImages();
-  };
-
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
+    setContrast(newContrast); // Cambia el valor de contraste
+    displayImages(); // Actualiza la imagen inmediatamente al cambiar el contraste
   };
 
   const handleExportToExcel = () => {
     const headers = ['Title', 'Value'];
     const data = dicomInfo.map((item) => [item.title, item.value]);
 
-    // Crear el libro de Excel
     const wb = XLSX.utils.book_new();
     const ws = XLSX.utils.aoa_to_sheet([headers, ...data]);
     XLSX.utils.book_append_sheet(wb, ws, 'DICOM_Info');
 
-    // Descargar el archivo de Excel
     XLSX.writeFile(wb, 'dicom_info.xlsx');
   };
 
-  // Filtrar la información según el término de búsqueda
-  const filteredDicomInfo = dicomInfo.filter((item) =>
-    item.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const saveCurrentImage = () => {
+    const canvas = document.querySelector('.cornerstone-canvas');
+    if (canvas) {
+      const imageData = canvas.toDataURL('image/png');
+      const link = document.createElement('a');
+      link.href = imageData;
+      link.download = `DICOM_image_${currentIndex + 1}.png`;
+      link.click();
+    }
+  };
 
   return (
     <div>
@@ -204,30 +185,13 @@ const DicomViewer = () => {
           </form>
           <ModalComponent isOpen={isOpen} toggleModal={toggleModal}>
             <h2>Información DICOM</h2>
-            <div className="dicom-info-container">
-              {fileName && <p>Archivo cargado: {fileName}</p>}
-              <input
-                type="text"
-                className="search-input"
-                placeholder="Buscar información..."
-                value={searchTerm}
-                onChange={handleSearchChange}
-              />
-              <button onClick={handleExportToExcel} className="export-button">Exportar a Excel</button>
-              {/* Mapea solo una vez para mostrar la información DICOM filtrada */}
-              {filteredDicomInfo.map((item, index) => (
-                <div key={index} className="dicom-info-item">
-                  <h3>{item.title}</h3>
-                  <p>{item.value}</p>
-                </div>
-              ))}
-            </div>
+            <button onClick={handleExportToExcel} className="export-button">Exportar a Excel</button>
           </ModalComponent>
         </div>
         <div id="dicomImage" className="dicom-wrapper">
           <canvas className="cornerstone-canvas"></canvas>
         </div>
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px'}}>
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
           <label htmlFor="index" style={{ marginRight: '10px', color:'white' }}>Imagen: </label>
           <input
             id="index"
@@ -262,16 +226,15 @@ const DicomViewer = () => {
             id="contrast"
             type="range"
             min="0"
-            max="3" // Puedes ajustar el rango según tus necesidades
+            max="3"
             step="0.1"
             value={contrast}
             onChange={handleContrastChange}
-            className='custom-range' // dicomViewer.css
+            className='custom-range'
           />
-          {/* Notificador para el contraste */}
-          <span style={{ marginLeft: '10px', color: 'white' }}>{Math.round((contrast / 3) * 100)}%</span>
+          <span style={{ marginLeft: '10px', color: 'white' }}>{Math.round(contrast * 100)}%</span>
         </div>
-        <div ref={threeViewerRef} style={{ width: '100%', height: '400px' }} />
+        <button className="save-button" onClick={saveCurrentImage}>Guardar Imagen Actual</button>
       </div>
     </div>
   );

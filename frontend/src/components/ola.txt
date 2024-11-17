@@ -1,0 +1,15 @@
+<div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+          <label htmlFor="colorMap" style={{ marginRight: '10px', color: 'white' }}>
+            Mapa de Colores:
+          </label>
+          <select
+            id="colorMap"
+            value={colorMap}
+            onChange={(e) => setColorMap(e.target.value)} // Cambiar mapa de colores
+            style={{ padding: '5px', backgroundColor: '#333', color: 'white' }}
+          >
+            <option value="gray">Escala de Grises</option>
+            <option value="hot">Caliente</option>
+            <option value="cool">Frío</option>
+          </select>
+        </div>
