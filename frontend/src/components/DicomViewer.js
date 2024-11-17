@@ -166,7 +166,12 @@ const DicomViewer = () => {
       link.click();
     }
   };
-
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+  const filteredDicomInfo = dicomInfo.filter((item) =>
+    item.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   return (
     <div>
       <Nav />
@@ -185,7 +190,24 @@ const DicomViewer = () => {
           </form>
           <ModalComponent isOpen={isOpen} toggleModal={toggleModal}>
             <h2>Información DICOM</h2>
-            <button onClick={handleExportToExcel} className="export-button">Exportar a Excel</button>
+            <div className="dicom-info-container">
+              {fileName && <p>Archivo cargado: {fileName}</p>}
+              <input
+                type="text"
+                className="search-input"
+                placeholder="Buscar información..."
+                value={searchTerm}
+                onChange={handleSearchChange}
+              />
+              <button onClick={handleExportToExcel} className="export-button">Exportar a Excel</button>
+              {/* Mapea solo una vez para mostrar la información DICOM filtrada */}
+              {filteredDicomInfo.map((item, index) => (
+                <div key={index} className="dicom-info-item">
+                  <h3>{item.title}</h3>
+                  <p>{item.value}</p>
+                </div>
+              ))}
+            </div>
           </ModalComponent>
         </div>
         <div id="dicomImage" className="dicom-wrapper">
