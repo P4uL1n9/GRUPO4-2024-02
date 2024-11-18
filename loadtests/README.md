@@ -1,5 +1,7 @@
-Prueba 1: Registro válido \n
+Prueba 1: Registro válido
+
 Prueba 2: Registro inválido
+
 Prueba 3: Login inválido
 
 Se realizaron 100 tests en un tiempo límite de 30 segundos.
