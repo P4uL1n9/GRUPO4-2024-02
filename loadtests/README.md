@@ -1,4 +1,4 @@
-Prueba 1: Registro válido
+Prueba 1: Registro válido \n
 Prueba 2: Registro inválido
 Prueba 3: Login inválido
 
